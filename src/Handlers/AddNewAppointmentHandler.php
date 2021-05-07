@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Handlers;
 
 use App\Commands\AddNewAppointment;
-use App\Commands\Interfaces\CommandInterface;
 use App\Services\Interfaces\ProcessorInterface;
 
 class AddNewAppointmentHandler
