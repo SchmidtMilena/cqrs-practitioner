@@ -5,19 +5,19 @@ declare(strict_types=1);
 namespace App\Handlers;
 
 use App\Commands\AddNewPatient;
-use App\Services\Interfaces\ProcessorInterface;
+use App\Repositories\Interfaces\PatientRepositoryInterface;
 
 class AddNewPatientHandler
 {
-    private ProcessorInterface $processor;
+    private PatientRepositoryInterface $patientRepository;
 
-    public function __construct(ProcessorInterface $processor)
+    public function __construct(PatientRepositoryInterface $patientRepository)
     {
-        $this->processor = $processor;
+
     }
 
     public function __invoke(AddNewPatient $command)
     {
-        $this->processor->process();
+
     }
 }

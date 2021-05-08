@@ -17,6 +17,11 @@ class BusServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
+        $this->bindCommandsTohandlers();
+    }
+
+    private function bindCommandsToHandlers(): void
+    {
         Bus::map([
             AddNewAppointment::class => AddNewAppointmentHandler::class,
             AddNewPatient::class => AddNewPatientHandler::class,

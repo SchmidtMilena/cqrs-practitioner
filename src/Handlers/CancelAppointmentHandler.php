@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace App\Handlers;
 
-use App\Services\Interfaces\ProcessorInterface;
+use App\Repositories\Interfaces\AppointmentRepositoryInterface;
 
 class CancelAppointmentHandler
 {
-    private ProcessorInterface $processor;
+    private AppointmentRepositoryInterface $appointmentRepository;
 
-    public function __construct(ProcessorInterface $processor)
+    public function __construct(AppointmentRepositoryInterface $appointmentRepository)
     {
-        $this->processor = $processor;
+        $this->appointmentRepository = $appointmentRepository;
     }
 
 }

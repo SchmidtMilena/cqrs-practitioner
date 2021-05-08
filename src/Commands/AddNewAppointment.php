@@ -10,7 +10,7 @@ class AddNewAppointment
 {
     private Appointment $appointment;
 
-    public function __constuct(Appointment $appointment)
+    public function __construct(Appointment $appointment)
     {
         $this->appointment = $appointment;
     }
