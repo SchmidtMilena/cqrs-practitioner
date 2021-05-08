@@ -4,19 +4,27 @@ declare(strict_types=1);
 
 namespace App\Commands;
 
-use App\Models\Appointment;
+use App\Models\Patient;
+use App\Models\AppointmentData;
 
 class AddNewAppointment
 {
-    private Appointment $appointment;
+    private AppointmentData $appointmentData;
+    private Patient $patient;
 
-    public function __construct(Appointment $appointment)
+    public function __construct(AppointmentData $appointmentData, Patient $patient)
     {
-        $this->appointment = $appointment;
+        $this->appointmentData = $appointmentData;
+        $this->patient = $patient;
     }
 
-    public function getAppointment(): Appointment
+    public function getAppointmentData(): AppointmentData
     {
-        return $this->appointment;
+        return $this->appointmentData;
+    }
+
+    public function getPatient(): Patient
+    {
+        return $this->patient;
     }
 }

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Models\Interfaces\Serializable;
+
 /**
  * Class NewPatientData
  * @package App\Models
@@ -12,7 +14,7 @@ namespace App\Models;
  * @property string $pesel,
  * @property string $email,
  */
-class NewPatientData
+class NewPatientData implements Serializable
 {
     private string $name;
 
@@ -48,5 +50,15 @@ class NewPatientData
     public function getEmail(): string
     {
         return $this->email;
+    }
+
+    public function serialize(): array
+    {
+        return [
+            'name' => $this->name,
+            'lastName' => $this->lastName,
+            'pesel' => $this->pesel,
+            'email' => $this->email,
+        ];
     }
 }

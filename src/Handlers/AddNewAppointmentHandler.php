@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Handlers;
 
+use App\Models\Patient;
 use App\Commands\AddNewAppointment;
+use App\Models\Interfaces\Serializable;
 use App\Repositories\Interfaces\AppointmentRepositoryInterface;
 
 class AddNewAppointmentHandler
@@ -16,17 +18,18 @@ class AddNewAppointmentHandler
         $this->appointmentRepository = $appointmentRepository;
     }
 
-    public function __invoke(AddNewAppointment $command)
+    public function __invoke(AddNewAppointment $command): void
     {
-
+        $this->saveToDatabase($command->getAppointmentData());
+        $this->sendMailToPatient($command->getPatient());
     }
 
-    private function saveToDatabase(): void
+    private function saveToDatabase(Serializable $serializable): void
     {
-
+        $this->appointmentRepository->create($serializable->serialize());
     }
 
-    private function sendMailToPatient(string $email): void
+    private function sendMailToPatient(Patient $patient): void
     {
 
     }

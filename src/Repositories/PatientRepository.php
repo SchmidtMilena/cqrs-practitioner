@@ -5,19 +5,17 @@ declare(strict_types=1);
 namespace App\Repositories;
 
 use App\Models\Patient;
-use App\Models\NewPatientData;
 use App\Repositories\Interfaces\PatientRepositoryInterface;
 
 class PatientRepository implements PatientRepositoryInterface
 {
-
     public function getById(int $id): Patient
     {
-        // TODO: Implement getById() method.
+        return Patient::findOrFail($id);
     }
 
-    public function create(NewPatientData $patientData): void
+    public function create(array $data): void
     {
-        // TODO: Implement create() method.
+        Patient::create($data);
     }
 }
