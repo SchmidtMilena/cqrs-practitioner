@@ -28,8 +28,8 @@ class AddNewAppointmentHandler
 
     private function saveToDatabase(Serializable $serializable): void
     {
-        $newAppointmentsArray = $serializable->serialize();
-        $this->appointmentRepository->create($newAppointmentsArray);
+        $newAppointmentArray = $serializable->serialize();
+        $this->appointmentRepository->create($newAppointmentArray);
     }
 
     private function sendMailToPatient(Patient $patient, AppointmentData $appointmentData): void
