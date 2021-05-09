@@ -7,6 +7,12 @@ namespace App\Models;
 use Carbon\Carbon;
 use App\Models\Interfaces\Serializable;
 
+/**
+ * Class AppointmentData
+ * @package App\Models
+ * @property int $patient_id,
+ * @property Carbon $date,
+ */
 class AppointmentData implements Serializable
 {
     private int $patient_id;
