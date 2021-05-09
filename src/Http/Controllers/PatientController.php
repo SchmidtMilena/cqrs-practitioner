@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\NewPatientData;
 use Illuminate\Bus\Dispatcher;
 use App\Commands\AddNewPatient;
+use App\Http\Requests\NewPatientRequest;
 
 class PatientController extends Controller
 {
@@ -16,16 +18,9 @@ class PatientController extends Controller
         $this->dispatcher = $dispatcher;
     }
 
-    public function store(): void
+    public function store(NewPatientRequest $request): void
     {
-        $dummyData = [
-            'name' => 'test',
-            'lastName' => 'testowy',
-            'pesel' => '11111111111',
-            'email' => 'test@test.pl'
-        ];
-
-        $data = new NewPatientData($dummyData['name'], $dummyData['lastName'], $dummyData['pesel'], $dummyData['email']);
+        $data = new NewPatientData($request->name, $request->lastName, $request->pesel, $request->email);
         $this->dispatcher->dispatch(new AddNewPatient($data));
     }
 }

@@ -18,7 +18,7 @@ class CancelAppointmentHandler
 
     public function __invoke(CancelAppointment $command): void
     {
-        $this->appointmentRepository->delete($command->getAppointment()->id);
+        $this->appointmentRepository->delete($command->getAppointmentId());
     }
 
 }

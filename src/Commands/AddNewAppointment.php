@@ -6,16 +6,17 @@ namespace App\Commands;
 
 use App\Models\Patient;
 use App\Models\AppointmentData;
+use App\Repositories\Interfaces\PatientRepositoryInterface;
 
 class AddNewAppointment
 {
     private AppointmentData $appointmentData;
-    private Patient $patient;
+    private PatientRepositoryInterface $patientRepository;
 
-    public function __construct(AppointmentData $appointmentData, Patient $patient)
+    public function __construct(AppointmentData $appointmentData, PatientRepositoryInterface $patientRepository)
     {
         $this->appointmentData = $appointmentData;
-        $this->patient = $patient;
+        $this->patientRepository = $patientRepository;
     }
 
     public function getAppointmentData(): AppointmentData
@@ -25,6 +26,6 @@ class AddNewAppointment
 
     public function getPatient(): Patient
     {
-        return $this->patient;
+        return $this->patientRepository->findById($this->appointmentData->getPatientId());
     }
 }

@@ -4,19 +4,17 @@ declare(strict_types=1);
 
 namespace App\Commands;
 
-use App\Models\Appointment;
-
 class CancelAppointment
 {
-    private Appointment $appointment;
+    private int $appointmentId;
 
-    public function __construct(Appointment $appointment)
+    public function __construct(int $appointmentId)
     {
-        $this->appointment = $appointment;
+        $this->appointmentId = $appointmentId;
     }
 
-    public function getAppointment(): Appointment
+    public function getAppointmentId(): int
     {
-        return $this->appointment;
+        return $this->appointmentId;
     }
 }

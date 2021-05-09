@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
+use App\Models\Appointment;
 use App\Repositories\Interfaces\AppointmentRepositoryInterface;
 
 class AppointmentRepository implements AppointmentRepositoryInterface
 {
     public function create(array $data): void
     {
-        // TODO: Implement create() method.
+        Appointment::create($data);
     }
 
     public function delete(int $id): void
     {
-        // TODO: Implement deleteAppointment() method.
+        Appointment::where('id', $id)->delete();
     }
 }
