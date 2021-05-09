@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace App\Handlers;
 
 use App\Models\Patient;
-use App\Mail\NewAppointment;
 use App\Models\AppointmentData;
 use App\Commands\AddNewAppointment;
-use Illuminate\Support\Facades\Mail;
 use App\Models\Interfaces\Serializable;
+use App\Notifications\NewAppointmentMail;
 use App\Repositories\Interfaces\AppointmentRepositoryInterface;
 
 class AddNewAppointmentHandler
@@ -29,11 +28,12 @@ class AddNewAppointmentHandler
 
     private function saveToDatabase(Serializable $serializable): void
     {
-        $this->appointmentRepository->create($serializable->serialize());
+        $newAppointmentsArray = $serializable->serialize();
+        $this->appointmentRepository->create($newAppointmentsArray);
     }
 
     private function sendMailToPatient(Patient $patient, AppointmentData $appointmentData): void
     {
-        Mail::to($patient)->send(new NewAppointment($appointmentData));
+        $patient->notify(new NewAppointmentMail($appointmentData));
     }
 }

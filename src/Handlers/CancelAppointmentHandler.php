@@ -20,5 +20,4 @@ class CancelAppointmentHandler
     {
         $this->appointmentRepository->delete($command->getAppointmentId());
     }
-
 }

@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * Class Patient
@@ -20,6 +21,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Patient extends Model
 {
+    use Notifiable;
+
     protected $fillable = [
         'name',
         'lastName',
