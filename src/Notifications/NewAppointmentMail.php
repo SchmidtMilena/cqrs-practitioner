@@ -43,8 +43,9 @@ class NewAppointmentMail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('The introduction to the notification.')
-            ->action('Notification Action', url('/'))
-            ->line('Thank you for using our application!');
+            ->subject(__('mail.new_appointment_subject'))
+            ->line(__('mail.new_appointment_content', ['date' => $this->appointmentData->getDate()]))
+            ->line(__('mail.new_appointment_cancel_text'))
+            ->action(__('mail.new_appointment_cancel_action'), url('/'));
     }
 }
