@@ -17,7 +17,13 @@ class CreateAppointmentsTable extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('patient_id')->index();
+            $table->dateTime('date');
             $table->timestamps();
+        });
+
+        Schema::table('appointments', function($table) {
+            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
         });
     }
 
