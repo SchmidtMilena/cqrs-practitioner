@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Commands;
+namespace App\Services\Patient\Commands;
 
 use App\Models\NewPatientData;
 

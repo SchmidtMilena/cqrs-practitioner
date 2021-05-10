@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
-use App\Commands\AddNewPatient;
 use Illuminate\Support\Facades\Bus;
-use App\Commands\AddNewAppointment;
-use App\Commands\CancelAppointment;
-use App\Handlers\AddNewPatientHandler;
 use Illuminate\Support\ServiceProvider;
-use App\Handlers\AddNewAppointmentHandler;
-use App\Handlers\CancelAppointmentHandler;
+use App\Services\Patient\Commands\AddNewPatient;
+use App\Services\Patient\Handlers\AddNewPatientHandler;
+use App\Services\Appointment\Commands\AddNewAppointment;
+use App\Services\Appointment\Commands\CancelAppointment;
+use App\Services\Appointment\Handlers\AddNewAppointmentHandler;
+use App\Services\Appointment\Handlers\CancelAppointmentHandler;
 
 class BusServiceProvider extends ServiceProvider
 {

@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Repositories;
+namespace App\Services\Appointment\Repositories;
 
 use App\Models\Appointment;
-use App\Repositories\Interfaces\AppointmentRepositoryInterface;
 
 class AppointmentRepository implements AppointmentRepositoryInterface
 {

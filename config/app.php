@@ -175,7 +175,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\BusServiceProvider::class,
-        App\Providers\RepositoryBindingServiceProvider::class,
+        App\Providers\AppointmentServiceProvider::class,
+        App\Providers\PatientServiceProvider::class,
 
     ],
 

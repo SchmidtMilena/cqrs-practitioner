@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Handlers;
+namespace App\Services\Appointment\Handlers;
 
-use App\Commands\CancelAppointment;
-use App\Repositories\Interfaces\AppointmentRepositoryInterface;
+use App\Services\Appointment\Commands\CancelAppointment;
+use App\Services\Appointment\Repositories\AppointmentRepositoryInterface;
 
 class CancelAppointmentHandler
 {

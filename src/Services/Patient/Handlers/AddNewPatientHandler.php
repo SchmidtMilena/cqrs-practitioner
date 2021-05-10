@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Handlers;
+namespace App\Services\Patient\Handlers;
 
-use App\Commands\AddNewPatient;
 use App\Models\Interfaces\Serializable;
-use App\Repositories\Interfaces\PatientRepositoryInterface;
+use App\Services\Patient\Commands\AddNewPatient;
+use App\Services\Patient\Repositories\PatientRepositoryInterface;
 
 class AddNewPatientHandler
 {

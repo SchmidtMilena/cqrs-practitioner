@@ -44,8 +44,6 @@ class NewAppointmentMail extends Notification
     {
         return (new MailMessage)
             ->subject(__('mail.new_appointment_subject'))
-            ->line(__('mail.new_appointment_content', ['date' => $this->appointmentData->getDate()]))
-            ->line(__('mail.new_appointment_cancel_text'))
-            ->action(__('mail.new_appointment_cancel_action'), url('/'));
+            ->line(__('mail.new_appointment_content', ['date' => $this->appointmentData->getDate()]));
     }
 }

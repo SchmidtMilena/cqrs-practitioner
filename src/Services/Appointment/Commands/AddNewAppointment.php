@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Commands;
+namespace App\Services\Appointment\Commands;
 
 use App\Models\Patient;
 use App\Models\AppointmentData;
-use App\Repositories\Interfaces\PatientRepositoryInterface;
+use App\Services\Patient\Repositories\PatientRepositoryInterface;
 
 class AddNewAppointment
 {

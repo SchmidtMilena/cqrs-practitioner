@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Handlers;
+namespace App\Services\Appointment\Handlers;
 
 use App\Models\Patient;
 use App\Models\AppointmentData;
-use App\Commands\AddNewAppointment;
 use App\Models\Interfaces\Serializable;
 use App\Notifications\NewAppointmentMail;
-use App\Repositories\Interfaces\AppointmentRepositoryInterface;
+use App\Services\Appointment\Commands\AddNewAppointment;
+use App\Services\Appointment\Repositories\AppointmentRepositoryInterface;
 
 class AddNewAppointmentHandler
 {

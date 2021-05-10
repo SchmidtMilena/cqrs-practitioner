@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Repositories;
+namespace App\Services\Patient\Repositories;
 
 use App\Models\Patient;
-use App\Repositories\Interfaces\PatientRepositoryInterface;
 
 class PatientRepository implements PatientRepositoryInterface
 {

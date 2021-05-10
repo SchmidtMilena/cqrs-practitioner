@@ -5,12 +5,10 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Repositories\PatientRepository;
-use App\Repositories\AppointmentRepository;
-use App\Repositories\Interfaces\PatientRepositoryInterface;
-use App\Repositories\Interfaces\AppointmentRepositoryInterface;
+use App\Services\Appointment\Repositories\AppointmentRepository;
+use App\Services\Appointment\Repositories\AppointmentRepositoryInterface;
 
-class RepositoryBindingServiceProvider extends ServiceProvider
+class AppointmentServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap services.
@@ -30,6 +28,10 @@ class RepositoryBindingServiceProvider extends ServiceProvider
     private function bindRepositoryInterfacesToImplementations(): void
     {
         $this->app->bind(AppointmentRepositoryInterface::class, AppointmentRepository::class);
-        $this->app->bind(PatientRepositoryInterface::class, PatientRepository::class);
+    }
+
+    public function provides(): array
+    {
+        return [AppointmentRepositoryInterface::class];
     }
 }
