@@ -26,7 +26,7 @@ class AppointmentController extends Controller
     {
         $appointmentData = new AppointmentData(
             null,
-            $request->get('id'),
+            $request->get('patient_id'),
             new CarbonImmutable($request->get('date'))
         );
 
