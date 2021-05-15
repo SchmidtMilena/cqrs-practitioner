@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services\Patient\Handlers;
 
+use App\Models\PatientData;
 use App\Services\Patient\Commands\AddNewPatient;
 use App\Services\Patient\Repositories\PatientRepositoryInterface;
 
@@ -18,6 +19,13 @@ class AddNewPatientHandler
 
     public function __invoke(AddNewPatient $command): void
     {
-        $this->patientRepository->create($command->getPatientData());
+        $patientData = new PatientData(
+            null,
+            $command->name,
+            $command->lastName,
+            $command->pesel,
+            $command->email
+        );
+        $this->patientRepository->create($patientData);
     }
 }

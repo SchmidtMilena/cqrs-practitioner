@@ -4,19 +4,18 @@ declare(strict_types=1);
 
 namespace App\Services\Patient\Commands;
 
-use App\Models\PatientData;
-
 class AddNewPatient
 {
-    private PatientData $patientData;
+    public string $name;
+    public string $lastName;
+    public string $pesel;
+    public string $email;
 
-    public function __construct(PatientData $patientData)
+    public function __construct(string $name, string $lastName, string $pesel, string $email)
     {
-        $this->patientData = $patientData;
-    }
-
-    public function getPatientData(): PatientData
-    {
-        return $this->patientData;
+        $this->name = $name;
+        $this->lastName = $lastName;
+        $this->pesel = $pesel;
+        $this->email = $email;
     }
 }

@@ -9,6 +9,7 @@ use App\Notifications\NewAppointmentMail;
 use App\Services\Appointment\Commands\AddNewAppointment;
 use App\Services\Appointment\Repositories\AppointmentRepositoryInterface;
 use App\Services\Patient\Repositories\PatientRepositoryInterface;
+use Carbon\CarbonImmutable;
 
 class AddNewAppointmentHandler
 {
@@ -25,7 +26,11 @@ class AddNewAppointmentHandler
 
     public function __invoke(AddNewAppointment $command): void
     {
-        $appointmentData = $command->getAppointmentData();
+        $appointmentData = new AppointmentData(
+            null,
+            $command->patientId,
+            new CarbonImmutable($command->date)
+        );
         $this->appointmentRepository->create($appointmentData);
         $this->sendMailToPatient($appointmentData);
     }

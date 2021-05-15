@@ -4,20 +4,15 @@ declare(strict_types=1);
 
 namespace App\Services\Appointment\Commands;
 
-use App\Models\AppointmentData;
-
 class AddNewAppointment
 {
-    private AppointmentData $appointmentData;
+    public int $patientId;
 
-    public function __construct(AppointmentData $appointmentData)
+    public string $date;
+
+    public function __construct(int $patientId, string $date)
     {
-        $this->appointmentData = $appointmentData;
+        $this->patientId = $patientId;
+        $this->date = $date;
     }
-
-    public function getAppointmentData(): AppointmentData
-    {
-        return $this->appointmentData;
-    }
-
 }
