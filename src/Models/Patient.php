@@ -6,7 +6,6 @@ namespace App\Models;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
 
 /**
  * Class Patient
@@ -21,8 +20,6 @@ use Illuminate\Notifications\Notifiable;
  */
 class Patient extends Model
 {
-    use Notifiable;
-
     protected $casts = [
         'name' => 'string',
         'lastName' => 'string',

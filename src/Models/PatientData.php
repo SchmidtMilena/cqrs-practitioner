@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Models\Interfaces\Serializable;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * Class NewPatientData
@@ -16,6 +17,8 @@ use App\Models\Interfaces\Serializable;
  */
 class PatientData implements Serializable
 {
+    use Notifiable;
+
     private ?int $id;
 
     private string $name;
@@ -68,5 +71,10 @@ class PatientData implements Serializable
             'pesel' => $this->pesel,
             'email' => $this->email,
         ];
+    }
+
+    public function routeNotificationForMail(): string
+    {
+        return $this->getEmail();
     }
 }
