@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use Illuminate\Bus\Dispatcher;
+use App\Http\Requests\CancelAppointmentRequest;
+use App\Http\Requests\NewAppointmentRequest;
 use App\Models\AppointmentData;
-use Illuminate\Http\JsonResponse;
 use App\Services\Appointment\Commands\AddNewAppointment;
 use App\Services\Appointment\Commands\CancelAppointment;
-use App\Http\Requests\NewAppointmentRequest;
-use App\Http\Requests\CancelAppointmentRequest;
+use Carbon\CarbonImmutable;
+use Illuminate\Bus\Dispatcher;
+use Illuminate\Http\JsonResponse;
 
 class AppointmentController extends Controller
 {
@@ -23,11 +24,17 @@ class AppointmentController extends Controller
 
     public function store(NewAppointmentRequest $request): JsonResponse
     {
-        $this->dispatcher->dispatch(new AddNewAppointment(new AppointmentData($request->id, $request->date)));
+        $appointmentData = new AppointmentData(
+            null,
+            $request->get('id'),
+            new CarbonImmutable($request->get('date'))
+        );
+
+        $this->dispatcher->dispatch(new AddNewAppointment($appointmentData));
     }
 
     public function delete(CancelAppointmentRequest $request): JsonResponse
     {
-        $this->dispatcher->dispatch(new CancelAppointment($request->appointment_id));
+        $this->dispatcher->dispatch(new CancelAppointment($request->get('appointment_id')));
     }
 }

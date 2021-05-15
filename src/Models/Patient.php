@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use Carbon\Carbon;
+use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
@@ -16,19 +16,12 @@ use Illuminate\Notifications\Notifiable;
  * @property string $lastName,
  * @property string $pesel,
  * @property string $email,
- * @property Carbon $created_at,
- * @property Carbon $updated_at
+ * @property CarbonImmutable $created_at,
+ * @property CarbonImmutable $updated_at
  */
 class Patient extends Model
 {
     use Notifiable;
-
-    protected $fillable = [
-        'name',
-        'lastName',
-        'pesel',
-        'email'
-    ];
 
     protected $casts = [
         'name' => 'string',

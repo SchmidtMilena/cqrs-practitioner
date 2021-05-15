@@ -4,25 +4,33 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use App\Models\Interfaces\Serializable;
+use Carbon\CarbonImmutable;
 
 /**
  * Class AppointmentData
  * @package App\Models
  * @property int $patient_id,
- * @property Carbon $date,
+ * @property CarbonImmutable $date,
  */
 class AppointmentData implements Serializable
 {
+    private ?int $id;
+
     private int $patient_id;
 
-    private Carbon $date;
+    private CarbonImmutable $date;
 
-    public function __construct(int $patient_id, Carbon $date)
+    public function __construct(?int $id, int $patient_id, CarbonImmutable $date)
     {
+        $this->id = $id;
         $this->patient_id = $patient_id;
         $this->date = $date;
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
     }
 
     public function getPatientId(): int
@@ -30,7 +38,7 @@ class AppointmentData implements Serializable
         return $this->patient_id;
     }
 
-    public function getDate(): Carbon
+    public function getDate(): CarbonImmutable
     {
         return $this->date;
     }

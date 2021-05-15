@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use Carbon\Carbon;
+use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -12,17 +12,12 @@ use Illuminate\Database\Eloquent\Model;
  * @package App\Models
  * @property int $id,
  * @property int $patient_id,
- * @property Carbon $date,
- * @property Carbon $created_at,
- * @property Carbon $upadted_at
+ * @property CarbonImmutable $date,
+ * @property CarbonImmutable $created_at,
+ * @property CarbonImmutable $updated_at
  */
 class Appointment extends Model
 {
-    protected $fillable = [
-       'patient_id',
-       'date'
-    ];
-
     protected $casts = [
         'id' => 'int',
         'patient_id' => 'int',

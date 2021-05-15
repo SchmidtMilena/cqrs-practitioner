@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Models\PatientData;
-use Illuminate\Bus\Dispatcher;
-use App\Services\Patient\Commands\AddNewPatient;
 use App\Http\Requests\NewPatientRequest;
+use App\Models\PatientData;
+use App\Services\Patient\Commands\AddNewPatient;
+use Illuminate\Bus\Dispatcher;
+use Illuminate\Http\JsonResponse;
 
 class PatientController extends Controller
 {
@@ -18,9 +19,16 @@ class PatientController extends Controller
         $this->dispatcher = $dispatcher;
     }
 
-    public function store(NewPatientRequest $request): void
+    public function store(NewPatientRequest $request): JsonResponse
     {
-        $data = new PatientData($request->name, $request->lastName, $request->pesel, $request->email);
+        $data = new PatientData(
+            null,
+            $request->get('name'),
+            $request->get('lastName'),
+            $request->get('pesel'),
+            $request->get('email')
+        );
+
         $this->dispatcher->dispatch(new AddNewPatient($data));
     }
 }
