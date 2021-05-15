@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Models\NewPatientData;
+use App\Models\PatientData;
 use Illuminate\Bus\Dispatcher;
-use App\Commands\AddNewPatient;
+use App\Services\Patient\Commands\AddNewPatient;
 use App\Http\Requests\NewPatientRequest;
 
 class PatientController extends Controller
@@ -20,7 +20,7 @@ class PatientController extends Controller
 
     public function store(NewPatientRequest $request): void
     {
-        $data = new NewPatientData($request->name, $request->lastName, $request->pesel, $request->email);
+        $data = new PatientData($request->name, $request->lastName, $request->pesel, $request->email);
         $this->dispatcher->dispatch(new AddNewPatient($data));
     }
 }

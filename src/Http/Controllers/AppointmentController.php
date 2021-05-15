@@ -7,28 +7,23 @@ namespace App\Http\Controllers;
 use Illuminate\Bus\Dispatcher;
 use App\Models\AppointmentData;
 use Illuminate\Http\JsonResponse;
-use App\Commands\AddNewAppointment;
-use App\Commands\CancelAppointment;
+use App\Services\Appointment\Commands\AddNewAppointment;
+use App\Services\Appointment\Commands\CancelAppointment;
 use App\Http\Requests\NewAppointmentRequest;
 use App\Http\Requests\CancelAppointmentRequest;
-use App\Repositories\Interfaces\PatientRepositoryInterface;
 
 class AppointmentController extends Controller
 {
     private Dispatcher $dispatcher;
-    private PatientRepositoryInterface $patientRepository;
 
-    public function __construct(Dispatcher $dispatcher, PatientRepositoryInterface $patientRepository)
+    public function __construct(Dispatcher $dispatcher)
     {
         $this->dispatcher = $dispatcher;
-        $this->patientRepository = $patientRepository;
     }
 
     public function store(NewAppointmentRequest $request): JsonResponse
     {
-        $this->dispatcher->dispatch(new AddNewAppointment(
-            new AppointmentData($request->id, $request->date), $this->patientRepository)
-        );
+        $this->dispatcher->dispatch(new AddNewAppointment(new AppointmentData($request->id, $request->date)));
     }
 
     public function delete(CancelAppointmentRequest $request): JsonResponse

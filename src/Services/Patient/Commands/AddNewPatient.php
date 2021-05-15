@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Services\Patient\Commands;
 
-use App\Models\NewPatientData;
+use App\Models\PatientData;
 
 class AddNewPatient
 {
-    private NewPatientData $patientData;
+    private PatientData $patientData;
 
-    public function __construct(NewPatientData $patientData)
+    public function __construct(PatientData $patientData)
     {
         $this->patientData = $patientData;
     }
 
-    public function getPatientData(): NewPatientData
+    public function getPatientData(): PatientData
     {
         return $this->patientData;
     }

@@ -14,7 +14,7 @@ use App\Models\Interfaces\Serializable;
  * @property string $pesel,
  * @property string $email,
  */
-class NewPatientData implements Serializable
+class PatientData implements Serializable
 {
     private string $name;
 
