@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::apiResource('/patient', PatientController::class)->only(['store']);
+Route::apiResource('/appointment', AppointmentController::class)->only(['store', 'destroy']);

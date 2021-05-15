@@ -1,8 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PatientController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +11,5 @@ use App\Http\Controllers\PatientController;
 |
 */
 
-Route::get('/patient', [PatientController::class, 'store']);
+
 

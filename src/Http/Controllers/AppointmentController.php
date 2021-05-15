@@ -33,7 +33,7 @@ class AppointmentController extends Controller
         $this->dispatcher->dispatch(new AddNewAppointment($appointmentData));
     }
 
-    public function delete(CancelAppointmentRequest $request): JsonResponse
+    public function destroy(CancelAppointmentRequest $request): JsonResponse
     {
         $this->dispatcher->dispatch(new CancelAppointment($request->get('appointment_id')));
     }
