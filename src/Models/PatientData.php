@@ -66,6 +66,7 @@ class PatientData implements Serializable
     public function serialize(): array
     {
         return [
+            'id' => $this->id,
             'name' => $this->name,
             'lastName' => $this->lastName,
             'pesel' => $this->pesel,
@@ -75,6 +76,6 @@ class PatientData implements Serializable
 
     public function routeNotificationForMail(): string
     {
-        return $this->getEmail();
+        return $this->email;
     }
 }

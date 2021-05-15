@@ -46,6 +46,7 @@ class AppointmentData implements Serializable
     public function serialize(): array
     {
         return [
+            'id' => $this->id,
             'patient_id' => $this->patient_id,
             'date' => $this->date,
         ];
